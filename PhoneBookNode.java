@@ -4,11 +4,11 @@ public class PhoneBookNode {
   String address;
   String city;
   int zipcode;
-  int phoneNumber;
+  String phoneNumber;
   PhoneBookNode next;
 
   public PhoneBookNode(String firstName, String lastName, String address, String city,
-    int zipcode, int phoneNumber){
+    int zipcode, String phoneNumber){
     this.firstName = firstName;
     this.lastName = lastName;
     this.address = address;
@@ -19,7 +19,7 @@ public class PhoneBookNode {
   }
 
   public PhoneBookNode(String firstName, String lastName, String address, String city,
-    int zipcode, int phoneNumber, PhoneBookNode next){
+    int zipcode, String phoneNumber, PhoneBookNode next){
     this.firstName = firstName;
     this.lastName = lastName;
     this.address = address;
@@ -27,5 +27,13 @@ public class PhoneBookNode {
     this.zipcode = zipcode;
     this.phoneNumber = phoneNumber;
     this.next = next;        
+  }
+
+  public PhoneBookNode(){
+    this.next = null;
+  }
+
+  public String toString(){
+    return lastName + ", " + firstName + "\n" + address + "\n" + city + "  " + zipcode + "\n" + phoneNumber + "\n";
   }
 }
