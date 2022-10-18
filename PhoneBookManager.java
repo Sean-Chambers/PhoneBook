@@ -8,7 +8,7 @@ public class PhoneBookManager {
   }
 
   public void add(String lastName, String firstName, String address, String city,
-    int zipcode, String phoneNumber){ //TODO: fix for test case in PhoneBookTestClass
+    int zipcode, String phoneNumber){
     //read in last name and first name
     String last = lastName;
     String first = firstName;
@@ -16,11 +16,6 @@ public class PhoneBookManager {
     if(head == null){
       head = new PhoneBookNode(lastName, firstName, address, city, zipcode, phoneNumber);
     } else{
-        // PhoneBookNode current = head;
-        // for(int i = 0; i < size - 1; i++){
-        //   current = current.next;
-        // }
-        // current.next = new PhoneBookNode(lastName, firstName, address, city, zipcode, phoneNumber);
       //for each letter of last name, while Character value is greater than Character value of name 
       //of next entry at same index, move current to next reference
       for(int i = 0; i < last.length(); i++){
@@ -49,13 +44,40 @@ public class PhoneBookManager {
     //TODO: complete modify method
   }
 
-  public void delete(){
-    //TODO: complete delete method
+  public void delete(String lastName, String firstName, String address){
+    PhoneBookNode current = head;
+    while(current.next != null){ //TODO: convert to for loop so that last node is checked
+      if(current.next.entry.lastName.equals(lastName) &&
+      current.next.entry.firstName.equals(firstName) &&
+      current.next.entry.address.equals(address) && 
+      current.next.next != null){
+        current.next = current.next.next;
+        break;
+      }
+      current = current.next;
+    }
   }
 
-  public void search(){
-    //TODO: complete search method
+  public void search(String lastName, String firstName){
+    PhoneBookNode current = head;
+    while(current.next != null){ //TODO: convert to for loop so that last node is checked
+      if(current.entry.lastName.equals(lastName) && current.entry.firstName.equals(firstName)){
+        System.out.println(current);
+      }
+      current = current.next;
+    }
   }
+
+  public void search(String lastName){
+    PhoneBookNode current = head;
+    while(current.next != null){ //TODO: convert to for loop so that last node is checked
+      if(current.entry.lastName.equals(lastName)){
+        System.out.println(current);
+      }
+      current = current.next;
+    }
+  }
+
   //pre-condition: 0 <= index < size
   public PhoneBookNode get(int index){
     PhoneBookNode current = head;
@@ -74,7 +96,11 @@ public class PhoneBookManager {
   }
 
   public void print(){
-    //TODO: complete print method
+    PhoneBookNode current = head;
+    while(current.next != null){
+      System.out.println(current);
+      current = current.next;
+    }
+    System.out.println(current);
   }
-
 }
