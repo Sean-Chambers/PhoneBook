@@ -1,8 +1,10 @@
 public class PhoneBookManager {
+  private int size;
   private PhoneBookNode head;
 
   PhoneBookManager(){
-    this.head = null;
+    size = 0;
+    head = null;
   }
 
   public void add(String lastName, String firstName, String address, String city,
@@ -12,8 +14,13 @@ public class PhoneBookManager {
     String first = firstName;
     PhoneBookNode current = head;
     if(head == null){
-      head = new PhoneBookNode("Sarah", "Hoekema", "4 Privet Drive", "Little Whinging", 12345, "3601234567");
+      head = new PhoneBookNode(lastName, firstName, address, city, zipcode, phoneNumber);
     } else{
+        // PhoneBookNode current = head;
+        // for(int i = 0; i < size - 1; i++){
+        //   current = current.next;
+        // }
+        // current.next = new PhoneBookNode(lastName, firstName, address, city, zipcode, phoneNumber);
       //for each letter of last name, while Character value is greater than Character value of name 
       //of next entry at same index, move current to next reference
       for(int i = 0; i < last.length(); i++){
@@ -35,6 +42,7 @@ public class PhoneBookManager {
       current.next = new PhoneBookNode(lastName, firstName, address, city,
         zipcode, phoneNumber, current.next);
     }
+    size++;
   }
 
   public void modify(){
@@ -48,17 +56,13 @@ public class PhoneBookManager {
   public void search(){
     //TODO: complete search method
   }
-
+  //pre-condition: 0 <= index < size
   public PhoneBookNode get(int index){
-    if(index == 0){
-      return head;
-    } else{
-      PhoneBookNode current = head;
-      for(int i = 0; i <= index; i++){
-        current = current.next;
-      }
-      return current;
+    PhoneBookNode current = head;
+    for(int i = 0; i < index; i++){
+      current = current.next;
     }
+    return current;
   }
 
   public void move(int given, int target){

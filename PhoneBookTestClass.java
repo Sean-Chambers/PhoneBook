@@ -7,6 +7,9 @@ public class PhoneBookTestClass {
     phonebook.add("Sarah", "Hoekemo", "4 Privet Drive", "Little Whinging", 12345, "3601234567");
     System.out.println(phonebook.get(1));
     phonebook.add("Serah", "Hoekema", "4 Privet Drive", "Little Whinging", 12345, "3601234567");
+    System.out.println(phonebook.get(0));
     System.out.println(phonebook.get(1));
+    System.out.println(phonebook.get(2));
+    
   }
 }
