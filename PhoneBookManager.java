@@ -37,7 +37,7 @@ public class PhoneBookManager {
 
   public void delete(String lastName, String firstName, String address){
     PhoneBookNode current = head;
-    for(int i = 0; i < size - 1; i++){ //TODO: convert to for loop so that last node is checked
+    for(int i = 0; i < size - 1; i++){ //TODO: debug delete method
       if(current.next.entry.lastName.equals(lastName) &&
       current.next.entry.firstName.equals(firstName) &&
       current.next.entry.address.equals(address) && 
