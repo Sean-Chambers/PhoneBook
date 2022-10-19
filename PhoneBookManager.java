@@ -18,7 +18,7 @@ public class PhoneBookManager {
     } else if(last.compareTo(current.entry.lastName) < 0 ||
       (last.compareTo(current.entry.lastName) == 0 && first.compareTo(current.entry.firstName) < 0)){
       head = new PhoneBookNode(lastName, firstName, address, city, zipcode, phoneNumber, head);
-    } else{
+    } else{ //TODO: debug sorting and adding process
       for(int i = 0; i < size; i++){
         if(last.compareTo(current.next.entry.lastName) <= 0 && first.compareTo(current.next.entry.firstName) < 0){
           current.next = new PhoneBookNode(lastName, firstName, address, city,
@@ -27,26 +27,6 @@ public class PhoneBookManager {
           current = current.next;
         }
       }
-      // //for each letter of last name, while Character value is greater than Character value of name 
-      // //of next entry at same index, move current to next reference
-      // for(int i = 0; i < last.length(); i++){
-      //   while(current.next!=null &&
-      //   Character.compare(last.charAt(i), current.next.entry.lastName.charAt(i)) > 0){
-      //     current = current.next;
-      //   }
-      // }
-      // //for each letter of first name, while Character value is greater than Character value of name 
-      // //of next entry at same index, move current to next reference
-      // for(int i = 0; i < first.length(); i++){
-      //   while(current.next!=null &&
-      //   Character.compare(first.charAt(i), current.next.entry.firstName.charAt(i)) > 0){
-      //     current = current.next;
-      //   }
-      // }
-      // //second level of organization if names are the same??
-      // //when pointing to correct position:
-      // current.next = new PhoneBookNode(lastName, firstName, address, city,
-      //   zipcode, phoneNumber, current.next);
     }
     size++;
   }
