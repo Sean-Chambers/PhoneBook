@@ -8,10 +8,10 @@ public class PhoneBookEntry {
   protected int zipcode;
   protected String phoneNumber;
 
-  public PhoneBookEntry(String firstName, String lastName, String address, String city,
+  public PhoneBookEntry(String lastName, String firstName, String address, String city,
   int zipcode, String phoneNumber){
-    this.firstName = firstName;
     this.lastName = lastName;
+    this.firstName = firstName;
     this.address = address;
     this.city = city;
     this.zipcode = zipcode;

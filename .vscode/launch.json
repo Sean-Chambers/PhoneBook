@@ -22,7 +22,9 @@
         "classNameFilters": [
             "java.*",
             "$JDK",
-            "$Libraries"
+            "$Libraries",
+            "sun.*",
+            "jdk.*"
         ],
         "skipSynthetics": false,
         "skipStaticInitializers": false,
