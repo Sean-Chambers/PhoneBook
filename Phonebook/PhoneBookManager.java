@@ -11,25 +11,25 @@ public class PhoneBookManager {
 
   public void add(String lastName, String firstName, String address, String city,
     int zipcode, String phoneNumber){
-    //read in last name and first name
-    String last = lastName;
-    String first = firstName;
     PhoneBookNode current = head;  
     if(head == null){
       head = new PhoneBookNode(lastName, firstName, address, city, zipcode, phoneNumber);
-    } else if(last.compareTo(current.getLastName()) < 0 ||
-      (last.compareTo(current.getLastName()) == 0 && first.compareTo(current.getFirstName()) < 0)){
+    } else if(lastName.compareTo(head.getLastName()) < 0 ||
+    (lastName.compareTo(head.getLastName()) == 0 && firstName.compareTo(head.getFirstName()) < 0)){
       head = new PhoneBookNode(lastName, firstName, address, city, zipcode, phoneNumber, head);
-    } else { //TODO: debug sorting and adding process
-      for(int i = 0; i < size; i++){
-        if(current.next != null &&
-        last.compareTo(current.next.getLastName()) <= 0 &&
-        first.compareTo(current.next.getFirstName()) < 0){
-          current.next = new PhoneBookNode(lastName, firstName, address, city,
-          zipcode, phoneNumber, current.next);
-        } else {
-          current = current.next;
-        }
+    } else {
+      while(current.next != null && 
+      (lastName.compareTo(current.next.getLastName()) > 0 ||
+      (lastName.compareTo(current.next.getLastName()) == 0 &&
+      firstName.compareTo(current.next.getFirstName()) > 0))){
+        current = current.next;
+      }
+      if(current.next != null){
+        current.next = new PhoneBookNode(lastName, firstName, address, city,
+        zipcode, phoneNumber, current.next);
+      } else{
+        current.next = new PhoneBookNode(lastName, firstName, address, city,
+        zipcode, phoneNumber);
       }
     }
     size++;
@@ -37,25 +37,32 @@ public class PhoneBookManager {
 
   //TODO: complete modify method
 
-  public void delete(String lastName, String firstName, String address){
-    PhoneBookNode current = head;
-    for(int i = 0; i < size - 1; i++){ //TODO: debug delete method
-      if(current.next.getLastName().equals(lastName) &&
-      current.next.getFirstName().equals(firstName) &&
-      current.next.getAddress().equals(address) && 
-      current.next.next != null){
-        current.next = current.next.next;
-        size--;
-        break;
-      } else if(current.next.getLastName().equals(lastName) &&
-      current.next.getFirstName().equals(firstName) &&
-      current.next.getAddress().equals(address) && 
-      current.next.next == null){
-        current.next = null;
-        size--;
-        break;
+  public void remove(String lastName, String firstName, String address){
+    if(head.getLastName().equals(lastName) &&
+    head.getFirstName().equals(firstName) &&
+    head.getAddress().equals(address)){
+      head = head.next;
+      size--;
+    } else{
+      PhoneBookNode current = head;
+      for(int i = 0; i < size - 1; i++){ //TODO: debug delete method
+        if(current.next.getLastName().equals(lastName) &&
+        current.next.getFirstName().equals(firstName) &&
+        current.next.getAddress().equals(address) && 
+        current.next.next != null){
+          current.next = current.next.next;
+          size--;
+          break;
+        } else if(current.next.getLastName().equals(lastName) &&
+        current.next.getFirstName().equals(firstName) &&
+        current.next.getAddress().equals(address) && 
+        current.next.next == null){
+          current.next = null;
+          size--;
+          break;
+        }
+        current = current.next;
       }
-      current = current.next;
     }
   }
 

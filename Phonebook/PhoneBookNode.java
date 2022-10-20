@@ -4,15 +4,15 @@ public class PhoneBookNode {
   private PhoneBookEntry entry;
   PhoneBookNode next;
 
-  public PhoneBookNode(String firstName, String lastName, String address, String city,
+  public PhoneBookNode(String lastName, String firstName, String address, String city,
     int zipcode, String phoneNumber){
-    entry = new PhoneBookEntry(firstName, lastName, address, city, zipcode, phoneNumber);
+    entry = new PhoneBookEntry(lastName, firstName, address, city, zipcode, phoneNumber);
     next = null;        
   }
 
-  public PhoneBookNode(String firstName, String lastName, String address, String city,
+  public PhoneBookNode(String lastName, String firstName, String address, String city,
     int zipcode, String phoneNumber, PhoneBookNode next){
-    entry = new PhoneBookEntry(firstName, lastName, address, city, zipcode, phoneNumber);
+    entry = new PhoneBookEntry(lastName, firstName, address, city, zipcode, phoneNumber);
     this.next = next;        
   }
 
