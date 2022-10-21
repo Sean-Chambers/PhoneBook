@@ -35,7 +35,19 @@ public class PhoneBookManager {
     size++;
   }
 
-  //TODO: complete modify method
+  public void modify(String lastName, String firstName, String address, PhoneBookEntry entry){
+    PhoneBookNode current = head;
+    for(int i = 0; i < size; i++){
+      if(current.getLastName().equals(lastName) &&
+      current.getFirstName().equals(firstName) &&
+      current.getAddress().equals(address)){
+        this.remove(lastName, firstName, address);
+        this.add(entry.lastName, entry.firstName, entry.address,
+        entry.city, entry.zipcode, entry.phoneNumber);
+      }
+      current = current.next;
+    }
+  }
 
   public void remove(String lastName, String firstName, String address){
     if(head.getLastName().equals(lastName) &&
@@ -45,7 +57,7 @@ public class PhoneBookManager {
       size--;
     } else{
       PhoneBookNode current = head;
-      for(int i = 0; i < size - 1; i++){ //TODO: debug delete method
+      for(int i = 0; i < size - 1; i++){
         if(current.next.getLastName().equals(lastName) &&
         current.next.getFirstName().equals(firstName) &&
         current.next.getAddress().equals(address) && 
@@ -95,16 +107,17 @@ public class PhoneBookManager {
     return current;
   }
 
-  //TODO: complete move method
-
   //TODO: complete movePhoneBook method
 
-  public void print(){
+  public String toString(){
     PhoneBookNode current = head;
-    for(int i = 0; i < size; i++){
-      System.out.println(current);
+    String s = "";
+    for(int i = 0; i < size - 1; i++){
+      s += current.toString() + "\n";
       current = current.next;
     }
+    s += current.toString();
+    return s;
   }
 
   public int size(){
