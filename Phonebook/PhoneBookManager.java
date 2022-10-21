@@ -1,3 +1,8 @@
+//Sarah Hoekema
+//CS 145
+//October 25, 2022
+//Assignment 2: Phone Book
+
 package PhoneBook;
 
 public class PhoneBookManager {
@@ -107,20 +112,46 @@ public class PhoneBookManager {
     return current;
   }
 
-  //TODO: complete movePhoneBook method
+  public void movePhoneBook(String lastName, String firstName, String currentAddress,
+  String newAddress, String newCity, int newZipcode, PhoneBookManager other){
+    PhoneBookNode current = head;
+    for(int i = 0; i < size; i++){
+      if(current.getLastName().equals(lastName) &&
+      current.getFirstName().equals(firstName) &&
+      current.getAddress().equals(currentAddress)){
+        other.add(current.getLastName(), current.getFirstName(), newAddress, newCity,
+        newZipcode, current.getPhoneNumber());
+        this.remove(lastName, firstName, currentAddress);
+      }
+      current = current.next;
+    }
+  }
 
   public String toString(){
     PhoneBookNode current = head;
-    String s = "";
-    for(int i = 0; i < size - 1; i++){
-      s += current.toString() + "\n";
-      current = current.next;
+    if(size == 0){
+      return "Phone book is empty";
+    } else{
+      String s = "";
+      for(int i = 0; i < size - 1; i++){
+        s += current.toString() + "\n";
+        current = current.next;
+      }
+      s += current.toString();
+      return s;
     }
-    s += current.toString();
-    return s;
   }
 
   public int size(){
     return size;
+  }
+
+  public void clear(){
+    head = null;
+    size = 0;
+  }
+
+  public boolean isEmpty(){
+    return size == 0;
   }
 }
