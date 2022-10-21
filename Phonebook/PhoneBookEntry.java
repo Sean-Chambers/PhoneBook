@@ -5,7 +5,10 @@
 
 package PhoneBook;
 
+//PhoneBookEntry.java stores the first name, last name, address, city, zipcode, and phone number
+//of an entry in a phone book
 public class PhoneBookEntry {
+  //fields
   protected String firstName;
   protected String lastName;
   protected String address;
@@ -13,6 +16,7 @@ public class PhoneBookEntry {
   protected int zipcode;
   protected String phoneNumber;
 
+  //constructor
   public PhoneBookEntry(String lastName, String firstName, String address, String city,
   int zipcode, String phoneNumber){
     this.lastName = lastName;

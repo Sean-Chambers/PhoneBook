@@ -6,6 +6,7 @@
 import PhoneBook.PhoneBookEntry;
 import PhoneBook.PhoneBookManager;
 
+//PhoneBookTestClass.java tests the methods within the PhoneBookManager class.
 public class PhoneBookTestClass {
   public static void main(String[] args){
     PhoneBookManager chicago = new PhoneBookManager();
