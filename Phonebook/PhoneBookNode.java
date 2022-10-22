@@ -1,4 +1,4 @@
-//Sarah Hoekema
+//Sarah Hoekema and Sean Chambers
 //CS 145
 //October 25, 2022
 //Assignment 2: Phone Book
